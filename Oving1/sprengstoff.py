@@ -18,15 +18,18 @@ def spor(kubbe):
     return hi
 
 # Oppretter lenket liste
-forste = None
-siste = None
-for linje in stdin:
-    forrige_siste = siste
-    siste = Kubbe(int(linje))
-    if forste == None:
-        forste = siste
-    else:
-        forrige_siste.neste = siste
+def init():
+    forste = None
+    siste = None
+    for linje in stdin:
+        forrige_siste = siste
+        siste = Kubbe(int(linje))
+        if forste == None:
+            forste = siste
+        else:
+            forrige_siste.neste = siste
+    print spor(forste)
 
 # Kaller loesningsfunksjonen og skriver ut resultatet
-print spor(forste)
+init()
+
