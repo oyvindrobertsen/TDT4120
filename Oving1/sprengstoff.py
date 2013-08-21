@@ -7,6 +7,8 @@ class Kubbe:
         self.vekt = vekt 
         self.neste = None 
 
+
+# Antar at tomme lister aldri vil forekomme
 def spor(kubbe):
     hi = kubbe.vekt
     while kubbe.neste != None:
