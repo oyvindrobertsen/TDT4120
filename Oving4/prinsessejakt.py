@@ -3,19 +3,23 @@ from gc import disable
 disable()
 def subgraphdensity(adjmat, startnode):
     n = len(adjmat)
-    visited = {i: False for i in xrange(n)}
+    visited = [False] * n
     vertices = 0
     edges = 0
+    visited[startnode] = True
     stack = [startnode]
     while stack:
-        print stack, visited, vertices, edges
-        vertices += 1
         cur = stack.pop()
-        visited[cur] = True
         for i in xrange(n):
-            if adjmat[cur][i] == 1 and not visited[i]:
-                edges += 1
+            if adjmat[cur][i] and not visited[i]:
+                visited[i] = True
                 stack.append(i)
+    for i in xrange(n):
+        if not visited[i]:
+            vertices += 1
+            for j in xrange(n):
+                if adjmat[i][j] and not visited[j]:
+                    edges += 1
     if vertices == 0:
         return 0.0
     else:
